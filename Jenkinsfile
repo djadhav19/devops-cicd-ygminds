@@ -6,14 +6,14 @@ pipeline {
     stages{
         stage('Build Maven'){
             steps{
-                git 'https://github.com/ankit-jagtap-devops/devops-cicd-ygminds.git'
+                git 'https://github.com/djadhav19/devops-cicd-ygminds.git'
                 sh 'mvn clean install'
             }
         }
         stage('Build docker image'){
             steps{
                 script{
-                    sh 'docker buildx build -t ankitjagtap/devops-integration .'
+                    sh 'docker buildx build -t djadhav19/devops-integration .'
                 }
             }
         }
@@ -24,7 +24,7 @@ pipeline {
                    sh 'docker login -u djadhav19 -p ${dockerhubpwd}'
 
 }
-                   sh 'docker push ankitjagtap/devops-integration'
+                   sh 'docker push djadhav19/devops-integration'
                 }
             }
         }
